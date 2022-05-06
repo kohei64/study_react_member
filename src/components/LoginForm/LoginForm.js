@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "./LoginForm.css";
+import "./styles/LoginForm.css";
 
 const LoginForm = () => {
   const initialValues = { username: "", password: "" };

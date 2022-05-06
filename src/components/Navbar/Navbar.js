@@ -1,7 +1,7 @@
 import React from "react";
 import NavItems from "./NavItems"
 import MobileMenu from "./MobileMenu"
-import "./Navbar.css";
+import "./styles/Navbar.css";
 
 const Navbar = () => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Members.css";
+import "./styles/Member.css";
 
 const MemberItems = ({ users }) => {
   return (
