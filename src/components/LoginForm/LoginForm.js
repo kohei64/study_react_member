@@ -8,6 +8,7 @@ const LoginForm = () => {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit,setIsSubmit]=useState(false);
 
+  // ユーザー名とパスワードの入力内容
   const handleChange=(e)=>{
     const{name,value}=e.target;
     setFormValues({...formValues,[name]:value})
@@ -19,6 +20,7 @@ const LoginForm = () => {
     setIsSubmit(true);
   };
 
+  // ユーザー名とパスワードの検証
   const validate=(values)=>{
     const errors={};
     if(!values.username){
@@ -53,10 +55,12 @@ const LoginForm = () => {
           </div>
           <p className="errorMsg">{formErrors.password}</p>
           <button className="submitButton">ログイン</button>
+          {/* successメッセージ */}
           {Object.keys(formErrors).length===0 && isSubmit && (
             <div className="successMsg">ログインに成功しました</div>
           )}
         </div>
+        {/* todo:jwt実装 */}
       <a href="/home">ホーム画面へ(仮)</a>
       </form>
     </div>

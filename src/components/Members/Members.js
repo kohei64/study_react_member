@@ -6,6 +6,7 @@ import MemberItems from "./MemberItems";
 const Members = () => {
   const [users, setUsers] = useState([]);
 
+  // api
   React.useEffect(() => {
     api.get("/users").then((res) => {
       setUsers(res.data);
