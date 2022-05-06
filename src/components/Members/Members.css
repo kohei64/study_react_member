@@ -1,0 +1,15 @@
+.memberItems {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.memberItem {
+  border: 1px solid black;
+  width: 46%;
+  margin: 15px;
+}
+/*# sourceMappingURL=Members.css.map */
