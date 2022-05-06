@@ -19,7 +19,7 @@ const NavItems = () => {
               <Link to="/members">Members</Link>
             </li>
             <li>
-              <Link to="/account">Account</Link>
+              <Link to="/account/">Account</Link>
             </li>
             <li>
               <Link to="/contact">Contact</Link>

@@ -13,7 +13,8 @@ const App = () => {
       <Routes>
         <Route path={"/login"} element={<LoginForm />}></Route>
         <Route path={"/home"} element={<Home />}></Route>
-        <Route path={"/account"} element={<Account />}></Route>
+        <Route path={"/account"} element={<Home />}></Route> {/*仮*/}
+        <Route path={"/account/:id"} element={<Account />}></Route>
         <Route path={"/members"} element={<Members />}></Route>
         <Route path={"/contact"} element={<Contact />}></Route>
       </Routes>
