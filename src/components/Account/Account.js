@@ -1,26 +1,25 @@
-import React,{useState} from 'react'
-import { useParams } from 'react-router-dom';
-import Navbar from '../Navbar/Navbar'
-import api from '../api/api'
-import AccountItem from './AccountItem'
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
+import api from "../api/api";
+import AccountItem from "./AccountItem";
 
 const Account = () => {
-  const { id } = useParams();
-  const [account,setAccount]=useState([]);
+  const { id } = useParams(); //urlのidを代入
+  const [user, setUser] = useState([]);
 
-  React.useEffect(()=>{
-    api.get(`/user/${id}`)
-      .then((res)=>{
-        setAccount(res.data)
-      })
-  },[]);
+  React.useEffect(() => {
+    api.get(`/user/${id}`).then((res) => {
+      setUser(res.data);
+    });
+  }, []);
 
   return (
     <div>
       <Navbar />
-      <AccountItem  account={account}/>
+      <AccountItem user={user} />
     </div>
-  )
-}
+  );
+};
 
-export default Account
+export default Account;

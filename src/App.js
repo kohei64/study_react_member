@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LoginForm from "./components/LoginForm/LoginForm";
-import Home from './components/Home/Home'
+import Home from "./components/Home/Home";
 import Account from "./components/Account/Account";
 import Members from "./components/Members/Members";
-import Contact from './components/Contact/Contact'
+import Contact from "./components/Contact/Contact";
 
 const App = () => {
   return (

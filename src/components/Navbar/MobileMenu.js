@@ -17,8 +17,8 @@ const MobileMenu = () => {
       <div className="mobileIcon" onClick={toggle}>
         {open ? <IoClose /> : <FaBars />}
       </div>
-      
-      <nav className={open ? 'mobileMenu':'hideMenu'}>
+
+      <nav className={open ? "mobileMenu" : "hideMenu"}>
         <ul className="mobileUi">
           <li>
             <Link to="/home">Home</Link>

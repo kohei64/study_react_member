@@ -9,8 +9,9 @@ const MemberItems = ({ users }) => {
         {users.map((user) => (
           <div key={user.id} className="memberItem">
             <p>名前</p>
-            {/* <h3>{user.name}</h3> */}
-            <h3><a href={"account/"+user.id}>{user.name}</a></h3>
+            <h3>
+              <a href={"account/" + user.id}>{user.name}</a>
+            </h3>
             <p>所属</p>
             <h4>{user.belongs}</h4>
             <p>技術</p>
