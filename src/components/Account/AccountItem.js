@@ -1,5 +1,5 @@
 import React from "react";
-import { Link ,useParams } from "react-router-dom";
+import { Link  } from "react-router-dom";
 
 const AccountItem = ({ user }) => {
   return (
@@ -14,7 +14,7 @@ const AccountItem = ({ user }) => {
         <h3>{user.skills}</h3>
       </div>
       <Link to={"/user/"+user.id+"/update"}>編集</Link>
-      <button onClick={deleteUser}>削除</button>
+      <button>削除</button>
       
       <button>ログアウト</button>
     </div>

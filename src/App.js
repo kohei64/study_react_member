@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LoginForm from "./components/LoginForm/LoginForm";
 import Home from "./components/Home/Home";
+import Create from './components/Create/Create'
 import Account from "./components/Account/Account";
 import Update from './components/Account/Update'
 import Members from "./components/Members/Members";
@@ -14,7 +15,7 @@ const App = () => {
       <Routes>
         <Route path={"/login"} element={<LoginForm />}></Route>
         <Route path={"/home"} element={<Home />}></Route>
-        <Route path={"/account"} element={<Home />}></Route> {/*仮*/}
+        <Route path={"/create"} element={<Create />}></Route>
         <Route path={"/account/:id"} element={<Account />}></Route>
         <Route path={"user/:id/update"} element={<Update />}></Route>
         <Route path={"/members"} element={<Members />}></Route>
