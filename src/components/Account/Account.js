@@ -5,7 +5,7 @@ import api from "../api/api";
 import AccountItem from "./AccountItem";
 
 const Account = () => {
-  const { id } = useParams(); //urlのidを代入
+  const { id } = useParams(); //URLのidを代入
   const [user, setUser] = useState([]);
 
   React.useEffect(() => {
@@ -17,7 +17,7 @@ const Account = () => {
   return (
     <div>
       <Navbar />
-      <AccountItem user={user} />
+      <AccountItem user={user}/>
     </div>
   );
 };

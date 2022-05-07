@@ -45,12 +45,12 @@ const LoginForm = () => {
         <hr />
         <div className="uiForm">
           <div className="formField">
-            <label>ユーザー名</label>
+            <label htmlFor="username">ユーザー名</label>
             <input type="text" name="username" onChange={(e)=>{handleChange(e)}}/>
           </div>
           <p className="errorMsg">{formErrors.username}</p>
           <div className="formField">
-            <label>パスワード</label>
+            <label htmlFor="password">パスワード</label>
             <input type="text" name="password" onChange={(e)=>{handleChange(e)}}/>
           </div>
           <p className="errorMsg">{formErrors.password}</p>

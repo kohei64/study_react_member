@@ -1,4 +1,5 @@
 import React from "react";
+import { Link ,useParams } from "react-router-dom";
 
 const AccountItem = ({ user }) => {
   return (
@@ -12,10 +13,10 @@ const AccountItem = ({ user }) => {
         <p>技術</p>
         <h3>{user.skills}</h3>
       </div>
-      {/* todo:component作成 */}
-      <button>編集</button>
+      <Link to={"/user/"+user.id+"/update"}>編集</Link>
+      <button onClick={deleteUser}>削除</button>
+      
       <button>ログアウト</button>
-      <button>アカウント削除</button>
     </div>
   );
 };
