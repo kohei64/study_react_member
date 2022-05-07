@@ -27,7 +27,7 @@ const MobileMenu = () => {
             <Link to="/members">Members</Link>
           </li>
           <li>
-            <Link to="/account">Account</Link>
+            <Link to="/create">Create</Link>
           </li>
           <li>
             <Link to="/contact">Contact</Link>
