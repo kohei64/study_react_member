@@ -60,8 +60,8 @@ const LoginForm = () => {
             <div className="successMsg">ログインに成功しました</div>
           )}
         </div>
-        {/* todo:jwt実装 */}
-      <a href="/home">ホーム画面へ(仮)</a>
+
+      <a href="/home">ホーム画面へ(仮)</a>   {/* todo:jwt実装 */}
       </form>
     </div>
   );

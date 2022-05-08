@@ -8,6 +8,7 @@ const Account = () => {
   const { id } = useParams(); //URLのidを代入
   const [user, setUser] = useState([]);
 
+  // api/ユーザー取得
   React.useEffect(() => {
     api.get(`/user/${id}`).then((res) => {
       setUser(res.data);

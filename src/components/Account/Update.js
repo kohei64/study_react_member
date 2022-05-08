@@ -4,16 +4,18 @@ import Navbar from "../Navbar/Navbar";
 import api from "../api/api";
 
 const Update = () => {
-  // 下8行、account.jsと同じこと書いてる
-  const { id } = useParams();
+  const { id } = useParams(); //URLのidを代入
   const [user, setUser] = useState([]);
 
+  // api/ユーザーを取得
   React.useEffect(() => {
     api.get(`/user/${id}`).then((res) => {
       setUser(res.data);
     });
   }, []);
 
+  // 編集した内容をセット
+  // todo:まとめて書く
   const [name,setName]=useState('');
   const [belongs,setBelongs]=useState('');
   const [skills,setSkills]=useState('');
@@ -30,7 +32,7 @@ const Update = () => {
     setSkills(e.target.value)
   }
 
-  // 未完成
+  // updateできない goが間違っているかも
   const updateUser=()=>{
     api.put(`/user/${id}`,{
       name:name,
