@@ -4,7 +4,6 @@ import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 
 const Create = () => {
-  // 初期値
   const initialValues = { username: "", password: "", belongs: "", skills: "" };
   const [formValues, setFormValues] = useState(initialValues);
 
@@ -16,13 +15,6 @@ const Create = () => {
 
   const createUser = (e) => {
     e.preventDefault();
-    // const user = {
-    //   name: formValues.username,
-    //   password: formValues.password,
-    //   belongs: formValues.belongs,
-    //   skills: formValues.skills,
-    // };
-    // dataが代入されない goが違うかも
     axios.post(`http://localhost:8080/user`, { 
       name: formValues.username,
       password: formValues.password,
