@@ -16,14 +16,19 @@ const Create = () => {
 
   const createUser = (e) => {
     e.preventDefault();
-    const user = {
+    // const user = {
+    //   name: formValues.username,
+    //   password: formValues.password,
+    //   belongs: formValues.belongs,
+    //   skills: formValues.skills,
+    // };
+    // dataが代入されない goが違うかも
+    axios.post(`http://localhost:8080/user`, { 
       name: formValues.username,
       password: formValues.password,
       belongs: formValues.belongs,
       skills: formValues.skills,
-    };
-    // dataが代入されない goが違うかも
-    axios.post(`http://localhost:8080/user`, { user }).then((res) => {
+    }).then((res) => {
       console.log(res);
       console.log(res.data);
     });
