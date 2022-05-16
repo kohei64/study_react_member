@@ -1,7 +1,7 @@
 import React from "react";
 import { Link  } from "react-router-dom";
 
-const AccountItem = ({ user }) => {
+const AccountItem = ({ user,deleteUser }) => {
   return (
     <div>
       <h2>アカウント画面</h2>
@@ -14,7 +14,7 @@ const AccountItem = ({ user }) => {
         <h3>{user.skills}</h3>
       </div>
       <Link to={"/user/"+user.id+"/update"}>編集</Link>
-      <button>削除</button>
+      <button onClick={deleteUser}>削除</button>
       
       <button>ログアウト</button>
     </div>

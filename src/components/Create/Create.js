@@ -21,6 +21,7 @@ const Create = () => {
       belongs: formValues.belongs,
       skills: formValues.skills,
     }).then((res) => {
+      // todo:リダイレクトにしたい
       console.log(res);
       console.log(res.data);
     });
