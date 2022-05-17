@@ -15,22 +15,11 @@ const Account = () => {
     });
   }, []);
 
-  //api/ユーザー削除
-  const deleteUser = () => {
-    React.useEffect(() => {
-      api.delete(`/user/${id}`).then(() => {
-        window.confirm("ユーザーを削除しますか？");
-        setUser(null);
-      });
-    });
-  };
-
   return (
     <div>
       <Navbar />
       <AccountItem 
       user={user}
-      deleteUser={deleteUser}
     />
     </div>
   );
