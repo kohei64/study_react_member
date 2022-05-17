@@ -1,7 +1,23 @@
 import React from "react";
-import { Link  } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import api from "../api/api";
 
-const AccountItem = ({ user,deleteUser }) => {
+
+const AccountItem = ({ user }) => {
+  const { id } = useParams(); //URLのidを代入
+
+  // redirect
+  const navigate = useNavigate();
+
+  const deleteUser = (e) => {
+    e.preventDefault();
+    api.delete(`/user/${id}`).then(()=>{
+      // todo:confirm入れる
+      // redirectできない
+      navigate('/members');
+    })
+  };
+
   return (
     <div>
       <h2>アカウント画面</h2>
@@ -13,7 +29,7 @@ const AccountItem = ({ user,deleteUser }) => {
         <p>技術</p>
         <h3>{user.skills}</h3>
       </div>
-      <Link to={"/user/"+user.id+"/update"}>編集</Link>
+      <button><Link to={"/user/"+user.id+"/update"}>編集</Link></button>
       <button onClick={deleteUser}>削除</button>
       
       <button>ログアウト</button>
