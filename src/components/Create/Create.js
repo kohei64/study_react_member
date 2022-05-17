@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
+import api from "../api/api";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 
 const Create = () => {
@@ -10,20 +12,23 @@ const Create = () => {
   const handleFormValue = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-    console.log(formValues);
+    // console.log(formValues);
   };
+
+  // redirect-これでいいのかな
+  const navigate = useNavigate();
 
   const createUser = (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:8080/user`, { 
+    api.post(`/user`, { 
       name: formValues.username,
       password: formValues.password,
       belongs: formValues.belongs,
       skills: formValues.skills,
-    }).then((res) => {
-      // todo:リダイレクトにしたい
-      console.log(res);
-      console.log(res.data);
+    }).then(() => {
+      // console.log(res);
+      // console.log(res.data);
+      navigate('/members');
     });
   };
 
