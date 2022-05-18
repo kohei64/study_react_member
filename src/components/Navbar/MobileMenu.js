@@ -21,7 +21,7 @@ const MobileMenu = () => {
       <nav className={open ? "mobileMenu" : "hideMenu"}>
         <ul className="mobileUi">
           <li>
-            <Link to="/home">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
             <Link to="/members">Members</Link>
