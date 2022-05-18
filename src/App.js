@@ -7,7 +7,6 @@ import Create from './components/Create/Create'
 import Account from "./components/Account/Account";
 import Update from './components/Account/Update'
 import Members from "./components/Members/Members";
-import Contact from "./components/Contact/Contact";
 
 const App = () => {
   return (
@@ -19,7 +18,6 @@ const App = () => {
         <Route path={"/account/:id"} element={<Account />}></Route>
         <Route path={"user/:id/update"} element={<Update />}></Route>
         <Route path={"/members"} element={<Members />}></Route>
-        <Route path={"/contact"} element={<Contact />}></Route>
       </Routes>
     </BrowserRouter>
   );
