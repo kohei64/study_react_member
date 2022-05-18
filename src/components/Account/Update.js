@@ -15,28 +15,24 @@ const Update = () => {
   }, []);
 
   // 編集した内容をセット
-  const [name,setName]=useState('');
-  const [belongs,setBelongs]=useState('');
-  const [skills,setSkills]=useState('');
+  const initialValues = { username: "", password: "", belongs: "", skills: "" };
+  const [updateValues, setUpdateValues] = useState(initialValues);
 
-  const handleName=(e)=>{
-    setName(e.target.value)
-  }
+  const handleUpdateValue = (e) => {
+    const { name, value } = e.target;
+    setUpdateValues({ ...updateValues, [name]: value });
+    // console.log(updateValues);
+  };
 
-  const handleBelongs=(e)=>{
-    setBelongs(e.target.value)
-  }
-
-  const handleSkills=(e)=>{
-    setSkills(e.target.value)
-  }
-
-  const updateUser=()=>{
+  const updateUser=(e)=>{
+    e.preventDefault();
     api.put(`/user/${id}`,{
-      name:name,
-      belongs:belongs,
-      skills:skills
+      name:updateValues.name,
+      belongs:updateValues.belongs,
+      skills:updateValues.skills
     }).then((res)=>{
+      // console.log(res);
+      // console.log(res.data);
       setUser(res.data)
     });
   }
@@ -48,11 +44,11 @@ const Update = () => {
         <h3>編集画面</h3>
         <form>
         <label htmlFor="username">名前</label>
-        <input type="text" name="username" defaultValue={user.name}onChange={handleName}/><br />
+        <input type="text" name="username" defaultValue={user.name}onChange={handleUpdateValue}/><br />
         <label htmlFor="belongs">所属</label>
-        <input type="text" name="belongs" defaultValue={user.belongs} onChange={handleBelongs}/><br />
+        <input type="text" name="belongs" defaultValue={user.belongs} onChange={handleUpdateValue}/><br />
         <label htmlFor="skills">技術</label>
-        <input type="text" name="skills" defaultValue={user.skills} onChange={handleSkills}/>
+        <input type="text" name="skills" defaultValue={user.skills} onChange={handleUpdateValue}/>
         <button onClick={updateUser}>変更</button>
         </form>
       </div>
