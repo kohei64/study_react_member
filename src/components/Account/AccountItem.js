@@ -14,7 +14,7 @@ const AccountItem = ({ user }) => {
     api.delete(`/user/${id}`).then(()=>{
       // todo:confirm入れる
       // redirectできない
-      navigate('/members');
+      navigate(`/members`);
     })
   };
 
@@ -29,10 +29,10 @@ const AccountItem = ({ user }) => {
         <p>技術</p>
         <h3>{user.skills}</h3>
       </div>
-      <button><Link to={"/user/"+user.id+"/update"}>編集</Link></button>
+      <button><Link to={"/account/"+user.id+"/update"}>編集</Link></button>
       <button onClick={deleteUser}>削除</button>
       
-      <button>ログアウト</button>
+      <button>ログアウト(未)</button>
     </div>
   );
 };

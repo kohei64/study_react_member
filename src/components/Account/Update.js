@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import api from "../api/api";
 
@@ -21,8 +22,11 @@ const Update = () => {
   const handleUpdateValue = (e) => {
     const { name, value } = e.target;
     setUpdateValues({ ...updateValues, [name]: value });
-    // console.log(updateValues);
+    console.log(updateValues);
   };
+
+    // redirect-これでいいのかな
+    const navigate = useNavigate();
 
   const updateUser=(e)=>{
     e.preventDefault();
@@ -31,9 +35,9 @@ const Update = () => {
       belongs:updateValues.belongs,
       skills:updateValues.skills
     }).then((res)=>{
-      // console.log(res);
-      // console.log(res.data);
-      setUser(res.data)
+      console.log(res);
+      console.log(res.data);
+      navigate(`/members`);
     });
   }
 
