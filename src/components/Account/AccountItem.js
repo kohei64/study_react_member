@@ -10,7 +10,7 @@ const AccountItem = ({ user }) => {
   const navigate = useNavigate();
 
   const deleteUser = (e) => {
-    e.preventDefault();
+    // e.preventDefault(); いらない？
     api.delete(`/user/${id}`).then(()=>{
       // todo:confirm入れる
       // redirectできない
