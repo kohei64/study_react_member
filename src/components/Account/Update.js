@@ -16,13 +16,13 @@ const Update = () => {
   }, []);
 
   // 編集した内容をセット
-  const initialValues = { username: "", password: "", belongs: "", skills: "" };
+  const initialValues = { name: "", belongs: "", skills: "" };
   const [updateValues, setUpdateValues] = useState(initialValues);
 
   const handleUpdateValue = (e) => {
     const { name, value } = e.target;
     setUpdateValues({ ...updateValues, [name]: value });
-    console.log(updateValues);
+    // console.log(updateValues);
   };
 
     // redirect-これでいいのかな
@@ -34,9 +34,9 @@ const Update = () => {
       name:updateValues.name,
       belongs:updateValues.belongs,
       skills:updateValues.skills
-    }).then((res)=>{
-      console.log(res);
-      console.log(res.data);
+    }).then(()=>{
+      // console.log(res);
+      // console.log(res.data);
       navigate(`/members`);
     });
   }
@@ -47,8 +47,8 @@ const Update = () => {
       <div className="update">
         <h3>編集画面</h3>
         <form>
-        <label htmlFor="username">名前</label>
-        <input type="text" name="username" defaultValue={user.name}onChange={handleUpdateValue}/><br />
+        <label htmlFor="name">名前</label>
+        <input type="text" name="name" defaultValue={user.name}onChange={handleUpdateValue}/><br />
         <label htmlFor="belongs">所属</label>
         <input type="text" name="belongs" defaultValue={user.belongs} onChange={handleUpdateValue}/><br />
         <label htmlFor="skills">技術</label>
