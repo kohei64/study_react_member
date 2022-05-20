@@ -45,15 +45,16 @@ const Update = () => {
     <div>
       <Navbar />
       <div className="update">
-        <h3>編集画面</h3>
-        <form>
-        <label htmlFor="name">名前</label>
-        <input type="text" name="name" defaultValue={user.name}onChange={handleUpdateValue}/><br />
-        <label htmlFor="belongs">所属</label>
-        <input type="text" name="belongs" defaultValue={user.belongs} onChange={handleUpdateValue}/><br />
-        <label htmlFor="skills">技術</label>
-        <input type="text" name="skills" defaultValue={user.skills} onChange={handleUpdateValue}/>
-        <button onClick={updateUser}>変更</button>
+        <h2>編集画面</h2>
+        <form className="m-5">
+        <label htmlFor="name" className="text-3xl">名前</label>
+        <input className="border border-black mx-3 rounded" type="text" name="name" defaultValue={user.name}onChange={handleUpdateValue}/><br />
+        <label htmlFor="belongs" className="text-3xl">所属</label>
+        <input className="border border-black mx-3 rounded" type="text" name="belongs" defaultValue={user.belongs} onChange={handleUpdateValue}/><br />
+        <label htmlFor="skills" className="text-3xl">技術</label>
+        <input className="border border-black mx-3 rounded" type="text" name="skills" defaultValue={user.skills} onChange={handleUpdateValue}/>
+        <br/>
+        <button className="mt-5 ml-2 bg-sky-600 hover:bg-sky-700 text-white py-2 px-3 rounded-lg transition" onClick={updateUser}>変更</button>
         </form>
       </div>
     </div>
