@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,YAAY,CAAA;EACX,UAAU,EAAE,MAAM;EAClB,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;CACf;;AAED,AAAA,WAAW,CAAA;EACV,MAAM,EAAE,eAAe;EACvB,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,IAAK;CACb",
-    "sources": [
-        "Members.scss"
-    ],
-    "names": [],
-    "file": "Members.css"
-}
