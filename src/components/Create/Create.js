@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-// import axios from "axios";
 import api from "../api/api";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
@@ -15,7 +14,6 @@ const Create = () => {
     // console.log(formValues);
   };
 
-  // redirect-これでいいのかな
   const navigate = useNavigate();
 
   const createUser = (e) => {
