@@ -31,7 +31,7 @@ const AccountItem = ({ user }) => {
       </div>
       <button className="m-3 bg-sky-600 hover:bg-sky-700 text-white py-2 px-3 rounded-lg transition"><Link to={"/account/"+user.id+"/update"}>編集</Link></button>
       <button className="m-3 bg-sky-600 hover:bg-sky-700 text-white py-2 px-3 rounded-lg transition" onClick={deleteUser}>削除</button>
-      <button className="m-3 bg-sky-600 hover:bg-sky-700 text-white py-2 px-3 rounded-lg transition">ログアウト(未)</button>
+      {/* <button className="m-3 bg-sky-600 hover:bg-sky-700 text-white py-2 px-3 rounded-lg transition">ログアウト(未)</button> */}
     </div>
   );
 };
