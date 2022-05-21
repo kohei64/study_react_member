@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import SignUp from "./components/SignUp/SignUp"
 import LoginForm from "./components/LoginForm/LoginForm";
 import Home from "./components/Home/Home";
 import Create from './components/Create/Create'
@@ -12,6 +13,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path={"/signup"} element={<SignUp />}></Route>
         <Route path={"/login"} element={<LoginForm />}></Route>
         <Route path={"/"} element={<Home />}></Route>
         <Route path={"/create"} element={<Create />}></Route>

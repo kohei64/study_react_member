@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const LoginForm = () => {
+const SignUp = () => {
   const initialValues = { name: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
@@ -38,12 +38,12 @@ const LoginForm = () => {
   }
 
   return (
-    <div className="formContainer">
+    <div>
       <form 
       className="w-1/3 mx-auto mt-64 border border-gray-700 p-7 rounded-lg"
       onSubmit={handleSubmit}
       >
-        <h2>ログイン</h2>
+        <h2>アカウント作成</h2>
         <hr />
         <div className="mb-6">
             <label
@@ -80,20 +80,18 @@ const LoginForm = () => {
           {/* エラー文 */}
           <p className="errorMsg">{formErrors.password}</p>
           <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            ログイン
+            作成
           </button>
           {/* successメッセージ */}
           {Object.keys(formErrors).length===0 && isSubmit && (
-            <div className="successMsg">ログインに成功しました</div>
+            <div className="successMsg">アカウント作成に成功しました</div>
           )}
 
         <br/>
-        <button><a href="/signup">アカウント作成</a></button>
-        <br/>
-        <button><a href="/">ホーム画面へ(仮)</a></button>
+        <button><a href="/">ホーム画面へ(仮)</a></button>   {/* todo:jwt実装 */}
       </form>
     </div>
   );
 };
 
-export default LoginForm;
+export default SignUp;
