@@ -34,24 +34,24 @@ const Create = () => {
 
   return (
     <div>
-      <div className="create">
+      <div className="">
         <Navbar />
         <h2>アカウント作成画面</h2>
-        <div className="create-form">
+        <div className="">
           <form method="post">
-            <label htmlFor="username">名前</label>
-            <input type="text" name="username" onChange={handleFormValue} />
+            <label className="text-3xl" htmlFor="username">名前　　</label>
+            <input className="border border-black mx-3 rounded" type="text" name="username" onChange={handleFormValue} />
             <br />
-            <label htmlFor="password">パスワード</label>
-            <input type="text" name="password" onChange={handleFormValue} />
+            {/* <label className="text-3xl" htmlFor="password">パスワード </label>
+            <input className="border border-black mx-3 rounded" type="text" name="password" onChange={handleFormValue} />
+            <br /> */}
+            <label className="text-3xl" htmlFor="belongs">所属　　</label>
+            <input className="border border-black mx-3 rounded" type="text" name="belongs" onChange={handleFormValue} />
             <br />
-            <label htmlFor="belongs">所属</label>
-            <input type="text" name="belongs" onChange={handleFormValue} />
+            <label className="text-3xl" htmlFor="skills">技術　　</label>
+            <input className="border border-black mx-3 rounded" type="text" name="skills" onChange={handleFormValue} />
             <br />
-            <label htmlFor="skills">技術</label>
-            <input type="text" name="skills" onChange={handleFormValue} />
-            <br />
-            <button onClick={createUser}>作成</button>
+            <button className="mt-5 ml-2 bg-sky-600 hover:bg-sky-700 text-white py-2 px-3 rounded-lg transition" onClick={createUser}>作成</button>
           </form>
         </div>
       </div>
