@@ -6,7 +6,7 @@ import api from "../api/api";
 const AccountItem = ({ user }) => {
   const { id } = useParams(); //URLのidを代入
 
-  // redirect
+  // redirect これでいいのか 
   const navigate = useNavigate();
 
   const deleteUser = (e) => {

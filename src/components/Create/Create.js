@@ -11,7 +11,6 @@ const Create = () => {
   const handleFormValue = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-    // console.log(formValues);
   };
 
   const navigate = useNavigate();
@@ -24,8 +23,6 @@ const Create = () => {
       belongs: formValues.belongs,
       skills: formValues.skills,
     }).then(() => {
-      // console.log(res);
-      // console.log(res.data);
       navigate('/members');
     });
   };
