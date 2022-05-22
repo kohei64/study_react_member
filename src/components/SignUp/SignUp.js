@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import api from "../api/api";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const initialValues = { name: "", password: "" };
@@ -11,12 +13,23 @@ const SignUp = () => {
   const handleChange=(e)=>{
     const{name,value}=e.target;
     setFormValues({...formValues,[name]:value})
+    console.log(formValues)
   };
+
+  const navigate = useNavigate();
 
   const handleSubmit=(e)=>{
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
+
+    api.post('/user',{
+      name: formValues.name,
+      password: formValues.password,
+    }).then((res)=>{
+      console.log(res.data)
+      navigate('/members')
+    });
   };
 
   // ユーザー名とパスワードの検証
