@@ -33,6 +33,7 @@ const SignUp = () => {
   };
 
   // ユーザー名とパスワードの検証
+  // todo:エラー文は表示されるけど、そのまま実行してしまうのを修正する
   const validate=(values)=>{
     const errors={};
     if(!values.name){
