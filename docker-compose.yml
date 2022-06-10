@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  node:
+    container_name: study_react_member_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./node:/code/study_react_member
+    command: sh -c "yarn start"
+    ports:
+      - "3000:3000"
