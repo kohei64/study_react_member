@@ -7,49 +7,60 @@ const SignUp = () => {
   const initialValues = { name: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
-  const [isSubmit,setIsSubmit]=useState(false);
+  const [uniqueName,setUniqueName] = useState({});
+  const [validateOk,setValidateOk] = useState(false);
 
   // ユーザー名とパスワードの入力内容
   const handleChange=(e)=>{
     const{name,value}=e.target;
     setFormValues({...formValues,[name]:value})
-    console.log(formValues)
+    if(formValues.name.length<2 || formValues.password.length<4 || formValues.password.length>16){
+      setValidateOk(false)
+    }else{
+      // stateが更新される前に関数が実行されるため、validateがtrueとなるのがワンテンポ遅いのが悩み
+      setValidateOk(true)
+    }
   };
 
+  // リダイレクト
   const navigate = useNavigate();
 
   const handleSubmit=(e)=>{
     e.preventDefault();
     setFormErrors(validate(formValues));
-    setIsSubmit(true);
 
-    api.post('/user',{
-      name: formValues.name,
-      password: formValues.password,
-    }).then((res)=>{
-      console.log(res.data)
-      navigate('/members')
-    });
+    // バックエンドでvalidateをするべきか？
+    if (validateOk){
+      api.post('/user',{
+        name: formValues.name,
+        password: formValues.password,
+      }).then((res)=>{
+        // gorm:uniqueを設定しているため、同じ名前がある場合id=0となるのを利用
+        if(res.data.id===0){
+          // エラーメッセージを代入
+          const signError={};
+          signError.unique="この名前は既に使われています。"
+          return setUniqueName(signError);
+        }else{
+          // 問題なければリダイレクト
+          navigate('/members')
+        }
+      });
+    }
+
   };
 
-  // ユーザー名とパスワードの検証
-  // todo:エラー文は表示されるけど、そのまま実行してしまうのを修正する
-  const validate=(values)=>{
-    const errors={};
-    if(!values.name){
-      errors.name="名前を入力してください"
-    }else if(values.name.length<2){
-      errors.name="2文字以上の名前にしてください"
+    // ユーザー名とパスワードの検証
+    const validate=(values)=>{
+      const errors={};
+      if(values.name.length<2){
+        errors.name="2文字以上の名前にしてください"
+      }
+      if(values.password.length<4 || values.password.length>16){
+        errors.password="4文字以上15文字以下のパスワードを入力してください"
+      }
+      return errors;
     }
-    if(!values.password){
-      errors.password="パスワードを入力してください"
-    }else if (values.password.length<4){
-      errors.password="4文字以上15文字以下のパスワードを入力してください"
-    }else if(values.password.length>15){
-      errors.password="4文字以上16文字以下のパスワードを入力してください"
-    }
-    return errors;
-  }
 
   return (
     <div>
@@ -59,6 +70,8 @@ const SignUp = () => {
       >
         <h2>アカウント作成</h2>
         <hr />
+        {/* エラーメッセージ */}
+        <p className="">{uniqueName.unique}</p>
         <div className="mb-6">
             <label
             htmlFor="name"
@@ -96,13 +109,6 @@ const SignUp = () => {
           <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             作成
           </button>
-          {/* successメッセージ */}
-          {Object.keys(formErrors).length===0 && isSubmit && (
-            <div className="successMsg">アカウント作成に成功しました</div>
-          )}
-
-        <br/>
-        <button><a href="/">ホーム画面へ(仮)</a></button>   {/* todo:jwt実装 */}
       </form>
     </div>
   );
