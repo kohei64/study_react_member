@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
+import api from "../api/api";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const initialValues = { name: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
-  const [isSubmit,setIsSubmit]=useState(false);
 
   // ユーザー名とパスワードの入力内容
   const handleChange=(e)=>{
@@ -13,29 +14,25 @@ const LoginForm = () => {
     setFormValues({...formValues,[name]:value})
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit=(e)=>{
     e.preventDefault();
-    setFormErrors(validate(formValues));
-    setIsSubmit(true);
-  };
 
-  // ユーザー名とパスワードの検証
-  const validate=(values)=>{
-    const errors={};
-    if(!values.name){
-      errors.name="名前を入力してください"
-    }else if(values.name.length<2){
-      errors.name="2文字以上の名前にしてください"
-    }
-    if(!values.password){
-      errors.password="パスワードを入力してください"
-    }else if (values.password.length<4){
-      errors.password="4文字以上15文字以下のパスワードを入力してください"
-    }else if(values.password.length>15){
-      errors.password="4文字以上16文字以下のパスワードを入力してください"
-    }
-    return errors;
-  }
+    api.post('/login',{
+      name: formValues.name,
+      password: formValues.password,
+    },).then((res)=>{
+      // ログイン失敗の時どうしたらいい？
+      if(res.data.id){
+        navigate(`/home/${res.data.id}`) 
+      }else{
+        const errors={};
+        errors.form="名前またはパスワードが違います。"
+        return setFormErrors(errors);
+      }
+  });
+  };
 
   return (
     <div className="formContainer">
@@ -45,6 +42,8 @@ const LoginForm = () => {
       >
         <h2>ログイン</h2>
         <hr />
+        {/* エラーメッセージ */}
+        <p className="mt-3">{formErrors.form}</p>
         <div className="mb-6">
             <label
             htmlFor="name"
@@ -57,11 +56,9 @@ const LoginForm = () => {
             name="name"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             onChange={handleChange}
-            // required
+            required
             />
           </div>
-          {/* エラー文 */}
-          <p className="">{formErrors.name}</p>
           <div className="mb-6">
             <label
             htmlFor="password"
@@ -74,23 +71,14 @@ const LoginForm = () => {
             name="password"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             onChange={handleChange}
-            // required
+            required
             />
           </div>
-          {/* エラー文 */}
-          <p className="errorMsg">{formErrors.password}</p>
           <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             ログイン
           </button>
-          {/* successメッセージ */}
-          {Object.keys(formErrors).length===0 && isSubmit && (
-            <div className="successMsg">ログインに成功しました</div>
-          )}
-
         <br/>
-        <button><a href="/signup">アカウント作成</a></button>
-        <br/>
-        <button><a href="/">ホーム画面へ(仮)</a></button>
+        <button className="mt-3"><a href="/signup">アカウント作成</a></button>
       </form>
     </div>
   );
